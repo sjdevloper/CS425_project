@@ -1,0 +1,500 @@
+INFO  [2016-05-03 22:01:06,533] org.eclipse.jetty.util.log: Logging initialized @8546ms
+INFO  [2016-05-03 22:01:07,246] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /*
+INFO  [2016-05-03 22:01:07,657] cs425.resources.PHPOracleResource: serving php from assets/oracle using danna@//104.156.238.111:11521/xe
+INFO  [2016-05-03 22:01:08,134] io.dropwizard.server.ServerFactory: Starting MyApp
+INFO  [2016-05-03 22:01:08,211] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-05-03 22:01:08,309] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-05-03 22:01:08,672] org.eclipse.jetty.setuid.SetUIDListener: Opened application@3676ac27{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-03 22:01:08,672] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@62f87c44{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-03 22:01:08,795] org.eclipse.jetty.server.Server: jetty-9.2.z-SNAPSHOT
+ERROR [2016-05-03 22:01:09,186] org.apache.tomcat.jdbc.pool.ConnectionPool: Unable to create initial connections of pool.
+! java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver
+! at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_65]
+! at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_65]
+! at java.lang.Class.forName0(Native Method) ~[na:1.8.0_65]
+! at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_65]
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:38) ~[cs425-1.0.0-fat.jar:na]
+! ... 23 common frames omitted
+! Causing: java.lang.ClassNotFoundException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:56) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:268) ~[cs425-1.0.0-fat.jar:na]
+! ... 22 common frames omitted
+! Causing: java.sql.SQLException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:280) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:200) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:708) [cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:642) [cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:464) [cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:141) [cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:115) [cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:102) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.db.ManagedPooledDataSource.start(ManagedPooledDataSource.java:38) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.lifecycle.JettyManaged.doStart(JettyManaged.java:27) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.start(Server.java:387) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:354) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.Cli.run(Cli.java:70) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.Application.run(Application.java:80) [cs425-1.0.0-fat.jar:na]
+! at cs425.MyApp.main(MyApp.java:78) [cs425-1.0.0-fat.jar:na]
+WARN  [2016-05-03 22:01:09,205] org.eclipse.jetty.util.component.AbstractLifeCycle: FAILED io.dropwizard.db.ManagedPooledDataSource@726386ed{ConnectionPool[defaultAutoCommit=null; defaultReadOnly=null; defaultTransactionIsolation=-1; defaultCatalog=null; driverClassName=oracle.jdbc.driver.OracleDriver; maxActive=100; maxIdle=100; minIdle=10; initialSize=10; maxWait=30000; testOnBorrow=false; testOnReturn=false; timeBetweenEvictionRunsMillis=5000; numTestsPerEvictionRun=0; minEvictableIdleTimeMillis=60000; testWhileIdle=true; testOnConnect=true; password=********; url=jdbc:oracle:thin:@104.156.238.111:11521:xe; username=danna; validationQuery=SELECT 1 FROM DUAL; validationQueryTimeout=-1; validatorClassName=null; validationInterval=30000; accessToUnderlyingConnectionAllowed=true; removeAbandoned=false; removeAbandonedTimeout=60; logAbandoned=false; connectionProperties=null; initSQL=null; jdbcInterceptors=null; jmxEnabled=true; fairQueue=true; useEquals=true; abandonWhenPercentageFull=0; maxAge=0; useLock=false; dataSource=null; dataSourceJNDI=null; suspectTimeout=0; alternateUsernameAllowed=false; commitOnReturn=false; rollbackOnReturn=false; useDisposableConnectionFacade=true; logValidationErrors=false; propagateInterruptState=false; ignoreExceptionOnPreLoad=false; }: java.sql.SQLException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver
+! at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_65]
+! at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_65]
+! at java.lang.Class.forName0(Native Method) ~[na:1.8.0_65]
+! at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_65]
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:38) ~[cs425-1.0.0-fat.jar:na]
+! ... 23 common frames omitted
+! Causing: java.lang.ClassNotFoundException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:56) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:268) ~[cs425-1.0.0-fat.jar:na]
+! ... 22 common frames omitted
+! Causing: java.sql.SQLException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:280) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:200) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:708) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:642) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:464) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:141) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:115) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:102) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.db.ManagedPooledDataSource.start(ManagedPooledDataSource.java:38) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.lifecycle.JettyManaged.doStart(JettyManaged.java:27) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.start(Server.java:387) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:354) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.Cli.run(Cli.java:70) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.Application.run(Application.java:80) [cs425-1.0.0-fat.jar:na]
+! at cs425.MyApp.main(MyApp.java:78) [cs425-1.0.0-fat.jar:na]
+INFO  [2016-05-03 22:01:09,338] org.eclipse.jetty.server.ServerConnector: Started application@3676ac27{HTTP/1.1}{0.0.0.0:8080}
+WARN  [2016-05-03 22:01:09,339] org.eclipse.jetty.util.thread.QueuedThreadPool: dw-admin{STOPPED,1<=0<=64,i=0,q=0} rejected org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1
+WARN  [2016-05-03 22:01:09,340] org.eclipse.jetty.util.component.AbstractLifeCycle: FAILED org.eclipse.jetty.server.ServerConnector$ServerConnectorManager@1fc793c2: java.util.concurrent.RejectedExecutionException: org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1
+! java.util.concurrent.RejectedExecutionException: org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1
+! at org.eclipse.jetty.util.thread.QueuedThreadPool.execute(QueuedThreadPool.java:362) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.io.SelectorManager.execute(SelectorManager.java:160) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.io.SelectorManager.doStart(SelectorManager.java:258) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:106) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:256) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:81) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:366) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.Cli.run(Cli.java:70) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.Application.run(Application.java:80) [cs425-1.0.0-fat.jar:na]
+! at cs425.MyApp.main(MyApp.java:78) [cs425-1.0.0-fat.jar:na]
+WARN  [2016-05-03 22:01:09,341] org.eclipse.jetty.util.component.AbstractLifeCycle: FAILED admin@62f87c44{HTTP/1.1}{0.0.0.0:8081}: java.util.concurrent.RejectedExecutionException: org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1
+! java.util.concurrent.RejectedExecutionException: org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1
+! at org.eclipse.jetty.util.thread.QueuedThreadPool.execute(QueuedThreadPool.java:362) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.io.SelectorManager.execute(SelectorManager.java:160) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.io.SelectorManager.doStart(SelectorManager.java:258) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:106) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:256) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:81) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:366) [cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.Cli.run(Cli.java:70) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.Application.run(Application.java:80) [cs425-1.0.0-fat.jar:na]
+! at cs425.MyApp.main(MyApp.java:78) [cs425-1.0.0-fat.jar:na]
+WARN  [2016-05-03 22:01:09,342] org.eclipse.jetty.util.component.AbstractLifeCycle: FAILED org.eclipse.jetty.server.Server@2575f671: MultiException[java.sql.SQLException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4, java.util.concurrent.RejectedExecutionException: org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1]
+! java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver
+! at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_65]
+! at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_65]
+! at java.lang.Class.forName0(Native Method) ~[na:1.8.0_65]
+! at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_65]
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:38) ~[cs425-1.0.0-fat.jar:na]
+! ... 23 common frames omitted
+! Causing: java.lang.ClassNotFoundException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:56) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:268) ~[cs425-1.0.0-fat.jar:na]
+! ... 22 common frames omitted
+! Causing: java.sql.SQLException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:280) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:200) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:708) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:642) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:464) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:141) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:115) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:102) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.db.ManagedPooledDataSource.start(ManagedPooledDataSource.java:38) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.lifecycle.JettyManaged.doStart(JettyManaged.java:27) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.start(Server.java:387) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:354) ~[cs425-1.0.0-fat.jar:na]
+! ... 7 common frames omitted
+! Causing: org.eclipse.jetty.util.MultiException: Multiple exceptions
+! at org.eclipse.jetty.server.Server.doStart(Server.java:329) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.Cli.run(Cli.java:70) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.Application.run(Application.java:80) [cs425-1.0.0-fat.jar:na]
+! at cs425.MyApp.main(MyApp.java:78) [cs425-1.0.0-fat.jar:na]
+! Suppressed: java.util.concurrent.RejectedExecutionException: org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1
+! 	at org.eclipse.jetty.util.thread.QueuedThreadPool.execute(QueuedThreadPool.java:362) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.io.SelectorManager.execute(SelectorManager.java:160) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.io.SelectorManager.doStart(SelectorManager.java:258) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:106) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:256) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:81) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.Server.doStart(Server.java:366) ~[cs425-1.0.0-fat.jar:na]
+! 	... 7 common frames omitted
+ERROR [2016-05-03 22:01:09,344] io.dropwizard.cli.ServerCommand: Unable to start server, shutting down
+! java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver
+! at java.net.URLClassLoader.findClass(URLClassLoader.java:381) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_65]
+! at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331) ~[na:1.8.0_65]
+! at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_65]
+! at java.lang.Class.forName0(Native Method) ~[na:1.8.0_65]
+! at java.lang.Class.forName(Class.java:348) ~[na:1.8.0_65]
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:38) ~[cs425-1.0.0-fat.jar:na]
+! ... 23 common frames omitted
+! Causing: java.lang.ClassNotFoundException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.ClassLoaderUtil.loadClass(ClassLoaderUtil.java:56) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:268) ~[cs425-1.0.0-fat.jar:na]
+! ... 22 common frames omitted
+! Causing: java.sql.SQLException: Unable to load class: oracle.jdbc.driver.OracleDriver from ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4;ClassLoader:sun.misc.Launcher$AppClassLoader@135fbaa4
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:280) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:200) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:708) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:642) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:464) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:141) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:115) ~[cs425-1.0.0-fat.jar:na]
+! at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:102) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.db.ManagedPooledDataSource.start(ManagedPooledDataSource.java:38) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.lifecycle.JettyManaged.doStart(JettyManaged.java:27) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.start(Server.java:387) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:114) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.handler.AbstractHandler.doStart(AbstractHandler.java:61) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:354) ~[cs425-1.0.0-fat.jar:na]
+! ... 7 common frames omitted
+! Causing: org.eclipse.jetty.util.MultiException: Multiple exceptions
+! at org.eclipse.jetty.server.Server.doStart(Server.java:329) ~[cs425-1.0.0-fat.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ServerCommand.run(ServerCommand.java:43) ~[cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:41) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:77) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.cli.Cli.run(Cli.java:70) [cs425-1.0.0-fat.jar:na]
+! at io.dropwizard.Application.run(Application.java:80) [cs425-1.0.0-fat.jar:na]
+! at cs425.MyApp.main(MyApp.java:78) [cs425-1.0.0-fat.jar:na]
+! Suppressed: java.util.concurrent.RejectedExecutionException: org.eclipse.jetty.util.thread.NonBlockingThread@433ffad1
+! 	at org.eclipse.jetty.util.thread.QueuedThreadPool.execute(QueuedThreadPool.java:362) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.io.SelectorManager.execute(SelectorManager.java:160) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.io.SelectorManager.doStart(SelectorManager.java:258) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.ContainerLifeCycle.start(ContainerLifeCycle.java:132) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(ContainerLifeCycle.java:106) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:256) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:81) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:236) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68) ~[cs425-1.0.0-fat.jar:na]
+! 	at org.eclipse.jetty.server.Server.doStart(Server.java:366) ~[cs425-1.0.0-fat.jar:na]
+! 	... 7 common frames omitted
+INFO  [2016-05-03 22:01:09,387] org.eclipse.jetty.server.ServerConnector: Stopped application@3676ac27{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-03 22:01:09,387] org.eclipse.jetty.server.ServerConnector: Stopped admin@62f87c44{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-03 22:02:28,903] org.eclipse.jetty.util.log: Logging initialized @2243ms
+INFO  [2016-05-03 22:02:29,041] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /*
+INFO  [2016-05-03 22:02:29,181] cs425.resources.PHPOracleResource: serving php from assets/oracle using danna@//104.156.238.111:11521/xe
+INFO  [2016-05-03 22:02:29,442] io.dropwizard.server.ServerFactory: Starting MyApp
+INFO  [2016-05-03 22:02:29,456] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-05-03 22:02:29,479] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-05-03 22:02:29,562] org.eclipse.jetty.setuid.SetUIDListener: Opened application@48f5bde6{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-03 22:02:29,562] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@525d79f0{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-03 22:02:29,574] org.eclipse.jetty.server.Server: jetty-9.2.z-SNAPSHOT
+INFO  [2016-05-03 22:02:52,079] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     /app/TAs (cs425.resources.TAResource)
+    POST    /app/TAs (cs425.resources.TAResource)
+    DELETE  /app/TAs/{id} (cs425.resources.TAResource)
+    PUT     /app/TAs/{id} (cs425.resources.TAResource)
+    POST    /app/account/groupLogin (cs425.auth.Accounts)
+    POST    /app/account/login (cs425.auth.Accounts)
+    POST    /app/account/logout (cs425.auth.Accounts)
+    GET     /app/comments (cs425.resources.CommentsResource)
+    GET     /app/comments/{groupID}/{forumID} (cs425.resources.CommentsResource)
+    POST    /app/comments/{groupID}/{forumID} (cs425.resources.CommentsResource)
+    DELETE  /app/comments/{groupID}/{forumID}/{id} (cs425.resources.CommentsResource)
+    PUT     /app/comments/{groupID}/{forumID}/{id} (cs425.resources.CommentsResource)
+    GET     /app/courses (cs425.resources.CoursesResource)
+    POST    /app/courses (cs425.resources.CoursesResource)
+    DELETE  /app/courses/{id} (cs425.resources.CoursesResource)
+    PUT     /app/courses/{id} (cs425.resources.CoursesResource)
+    GET     /app/faculty (cs425.resources.FacultyResource)
+    POST    /app/faculty (cs425.resources.FacultyResource)
+    DELETE  /app/faculty/{username} (cs425.resources.FacultyResource)
+    GET     /app/faculty/{username} (cs425.resources.FacultyResource)
+    PUT     /app/faculty/{username} (cs425.resources.FacultyResource)
+    GET     /app/forums (cs425.resources.ForumsResource)
+    GET     /app/forums/{groupID} (cs425.resources.ForumsResource)
+    POST    /app/forums/{groupID} (cs425.resources.ForumsResource)
+    DELETE  /app/forums/{groupID}/{id} (cs425.resources.ForumsResource)
+    PUT     /app/forums/{groupID}/{id} (cs425.resources.ForumsResource)
+    GET     /app/groupUsers (cs425.resources.GroupUsersResource)
+    POST    /app/groupUsers (cs425.resources.GroupUsersResource)
+    DELETE  /app/groupUsers/{groupUser} (cs425.resources.GroupUsersResource)
+    PUT     /app/groupUsers/{groupUser} (cs425.resources.GroupUsersResource)
+    GET     /app/groups (cs425.resources.GroupsResource)
+    POST    /app/groups (cs425.resources.GroupsResource)
+    DELETE  /app/groups/{id} (cs425.resources.GroupsResource)
+    PUT     /app/groups/{id} (cs425.resources.GroupsResource)
+    GET     /app/internships (cs425.resources.InternshipsResource)
+    GET     /app/internships/{username} (cs425.resources.InternshipsResource)
+    POST    /app/internships/{username} (cs425.resources.InternshipsResource)
+    DELETE  /app/internships/{username}/{internshipID} (cs425.resources.InternshipsResource)
+    PUT     /app/internships/{username}/{internshipID} (cs425.resources.InternshipsResource)
+    GET     /app/oracle/{phpfile} (cs425.resources.PHPOracleResource)
+    GET     /app/projects (cs425.resources.ProjectsResource)
+    GET     /app/projects/{username} (cs425.resources.ProjectsResource)
+    POST    /app/projects/{username} (cs425.resources.ProjectsResource)
+    DELETE  /app/projects/{username}/{projectID} (cs425.resources.ProjectsResource)
+    PUT     /app/projects/{username}/{projectID} (cs425.resources.ProjectsResource)
+    GET     /app/public-faculty (cs425.resources.PublicFacultyResource)
+    GET     /app/public-student (cs425.resources.PublicStudentsResource)
+    GET     /app/public/comments-by-groupID/{groupID} (cs425.resources.PublicResource)
+    GET     /app/public/comments-by-user/{username} (cs425.resources.PublicResource)
+    GET     /app/public/comments-pop-group (cs425.resources.PublicResource)
+    GET     /app/public/comments-pop-topic (cs425.resources.PublicResource)
+    GET     /app/student (cs425.resources.StudentsResource)
+    POST    /app/student (cs425.resources.StudentsResource)
+    DELETE  /app/student/{username} (cs425.resources.StudentsResource)
+    GET     /app/student/{username} (cs425.resources.StudentsResource)
+    PUT     /app/student/{username} (cs425.resources.StudentsResource)
+    GET     /app/take (cs425.resources.TakeResource)
+    POST    /app/take (cs425.resources.TakeResource)
+    GET     /app/take/GPAbyaInstructor/{title}/{instructor} (cs425.resources.TakeResource)
+    GET     /app/take/GPAbyallInstructor/{title} (cs425.resources.TakeResource)
+    GET     /app/take/byInstructor/{instructor} (cs425.resources.TakeResource)
+    DELETE  /app/take/{student}/{courseID} (cs425.resources.TakeResource)
+    PUT     /app/take/{student}/{courseID} (cs425.resources.TakeResource)
+    GET     /app/users (cs425.resources.UsersResource)
+    POST    /app/users (cs425.resources.UsersResource)
+    DELETE  /app/users/{username} (cs425.resources.UsersResource)
+    PUT     /app/users/{username} (cs425.resources.UsersResource)
+
+INFO  [2016-05-03 22:02:52,105] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@558756be{/,null,AVAILABLE}
+INFO  [2016-05-03 22:02:52,147] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+INFO  [2016-05-03 22:02:52,176] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@6981f8f3{/,null,AVAILABLE}
+INFO  [2016-05-03 22:02:52,188] org.eclipse.jetty.server.ServerConnector: Started application@48f5bde6{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-03 22:02:52,189] org.eclipse.jetty.server.ServerConnector: Started admin@525d79f0{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-03 22:02:52,189] org.eclipse.jetty.server.Server: Started @25533ms
+INFO  [2016-05-04 01:25:41,676] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=90cc2467-0048-46b1-a038-b64befc019d7;Version=1;Path=/
+INFO  [2016-05-04 01:25:51,344] cs425.resources.ForumsResource: getAll: 5 forums
+INFO  [2016-05-04 03:58:40,546] cs425.resources.StudentsResource: add s1: (2015,Fall,M2,master)
+INFO  [2016-05-04 03:59:51,932] cs425.resources.FacultyResource: add f1: (professor,2010,Good,{},{})
+INFO  [2016-05-04 04:00:40,669] cs425.resources.StudentsResource: add s2: (2015,Fall,U2,BS)
+INFO  [2016-05-04 04:01:03,277] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=5ee446d9-71f5-4d55-aad8-8be18f46b485;Version=1;Path=/
+INFO  [2016-05-04 04:01:05,040] cs425.resources.ForumsResource: getAll: 5 forums
+INFO  [2016-05-04 04:02:33,116] cs425.auth.Accounts: logout: admin as ADMIN
+INFO  [2016-05-04 04:02:38,585] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=a46ab763-262f-41d4-ac89-18a58b5728f8;Version=1;Path=/
+INFO  [2016-05-04 04:02:40,531] cs425.resources.ForumsResource: getAll: 5 forums
+INFO  [2016-05-04 04:03:20,483] org.eclipse.jetty.server.ServerConnector: Stopped application@48f5bde6{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-04 04:03:20,486] org.eclipse.jetty.server.ServerConnector: Stopped admin@525d79f0{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-04 04:03:20,495] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@6981f8f3{/,null,UNAVAILABLE}
+INFO  [2016-05-04 04:03:20,543] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@558756be{/,null,UNAVAILABLE}
+INFO  [2016-05-04 04:04:11,795] org.eclipse.jetty.util.log: Logging initialized @4360ms
+INFO  [2016-05-04 04:04:11,944] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /*
+INFO  [2016-05-04 04:04:12,060] cs425.resources.PHPOracleResource: serving php from assets/oracle using sjiang20@//fourier.cs.iit.edu:1521/orcl
+INFO  [2016-05-04 04:04:12,303] io.dropwizard.server.ServerFactory: Starting MyApp
+INFO  [2016-05-04 04:04:12,327] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2016-05-04 04:04:12,353] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2016-05-04 04:04:12,491] org.eclipse.jetty.setuid.SetUIDListener: Opened application@48f5bde6{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-04 04:04:12,492] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@525d79f0{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-04 04:04:12,537] org.eclipse.jetty.server.Server: jetty-9.2.z-SNAPSHOT
+INFO  [2016-05-04 04:04:17,231] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     /app/TAs (cs425.resources.TAResource)
+    POST    /app/TAs (cs425.resources.TAResource)
+    DELETE  /app/TAs/{id} (cs425.resources.TAResource)
+    PUT     /app/TAs/{id} (cs425.resources.TAResource)
+    POST    /app/account/groupLogin (cs425.auth.Accounts)
+    POST    /app/account/login (cs425.auth.Accounts)
+    POST    /app/account/logout (cs425.auth.Accounts)
+    GET     /app/comments (cs425.resources.CommentsResource)
+    GET     /app/comments/{groupID}/{forumID} (cs425.resources.CommentsResource)
+    POST    /app/comments/{groupID}/{forumID} (cs425.resources.CommentsResource)
+    DELETE  /app/comments/{groupID}/{forumID}/{id} (cs425.resources.CommentsResource)
+    PUT     /app/comments/{groupID}/{forumID}/{id} (cs425.resources.CommentsResource)
+    GET     /app/courses (cs425.resources.CoursesResource)
+    POST    /app/courses (cs425.resources.CoursesResource)
+    DELETE  /app/courses/{id} (cs425.resources.CoursesResource)
+    PUT     /app/courses/{id} (cs425.resources.CoursesResource)
+    GET     /app/faculty (cs425.resources.FacultyResource)
+    POST    /app/faculty (cs425.resources.FacultyResource)
+    DELETE  /app/faculty/{username} (cs425.resources.FacultyResource)
+    GET     /app/faculty/{username} (cs425.resources.FacultyResource)
+    PUT     /app/faculty/{username} (cs425.resources.FacultyResource)
+    GET     /app/forums (cs425.resources.ForumsResource)
+    GET     /app/forums/{groupID} (cs425.resources.ForumsResource)
+    POST    /app/forums/{groupID} (cs425.resources.ForumsResource)
+    DELETE  /app/forums/{groupID}/{id} (cs425.resources.ForumsResource)
+    PUT     /app/forums/{groupID}/{id} (cs425.resources.ForumsResource)
+    GET     /app/groupUsers (cs425.resources.GroupUsersResource)
+    POST    /app/groupUsers (cs425.resources.GroupUsersResource)
+    DELETE  /app/groupUsers/{groupUser} (cs425.resources.GroupUsersResource)
+    PUT     /app/groupUsers/{groupUser} (cs425.resources.GroupUsersResource)
+    GET     /app/groups (cs425.resources.GroupsResource)
+    POST    /app/groups (cs425.resources.GroupsResource)
+    DELETE  /app/groups/{id} (cs425.resources.GroupsResource)
+    PUT     /app/groups/{id} (cs425.resources.GroupsResource)
+    GET     /app/internships (cs425.resources.InternshipsResource)
+    GET     /app/internships/{username} (cs425.resources.InternshipsResource)
+    POST    /app/internships/{username} (cs425.resources.InternshipsResource)
+    DELETE  /app/internships/{username}/{internshipID} (cs425.resources.InternshipsResource)
+    PUT     /app/internships/{username}/{internshipID} (cs425.resources.InternshipsResource)
+    GET     /app/oracle/{phpfile} (cs425.resources.PHPOracleResource)
+    GET     /app/projects (cs425.resources.ProjectsResource)
+    GET     /app/projects/{username} (cs425.resources.ProjectsResource)
+    POST    /app/projects/{username} (cs425.resources.ProjectsResource)
+    DELETE  /app/projects/{username}/{projectID} (cs425.resources.ProjectsResource)
+    PUT     /app/projects/{username}/{projectID} (cs425.resources.ProjectsResource)
+    GET     /app/public-faculty (cs425.resources.PublicFacultyResource)
+    GET     /app/public-student (cs425.resources.PublicStudentsResource)
+    GET     /app/public/comments-by-groupID/{groupID} (cs425.resources.PublicResource)
+    GET     /app/public/comments-by-user/{username} (cs425.resources.PublicResource)
+    GET     /app/public/comments-pop-group (cs425.resources.PublicResource)
+    GET     /app/public/comments-pop-topic (cs425.resources.PublicResource)
+    GET     /app/student (cs425.resources.StudentsResource)
+    POST    /app/student (cs425.resources.StudentsResource)
+    DELETE  /app/student/{username} (cs425.resources.StudentsResource)
+    GET     /app/student/{username} (cs425.resources.StudentsResource)
+    PUT     /app/student/{username} (cs425.resources.StudentsResource)
+    GET     /app/take (cs425.resources.TakeResource)
+    POST    /app/take (cs425.resources.TakeResource)
+    GET     /app/take/GPAbyaInstructor/{title}/{instructor} (cs425.resources.TakeResource)
+    GET     /app/take/GPAbyallInstructor/{title} (cs425.resources.TakeResource)
+    GET     /app/take/byInstructor/{instructor} (cs425.resources.TakeResource)
+    DELETE  /app/take/{student}/{courseID} (cs425.resources.TakeResource)
+    PUT     /app/take/{student}/{courseID} (cs425.resources.TakeResource)
+    GET     /app/users (cs425.resources.UsersResource)
+    POST    /app/users (cs425.resources.UsersResource)
+    DELETE  /app/users/{username} (cs425.resources.UsersResource)
+    PUT     /app/users/{username} (cs425.resources.UsersResource)
+
+INFO  [2016-05-04 04:04:17,237] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@43e9089{/,null,AVAILABLE}
+INFO  [2016-05-04 04:04:17,246] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+INFO  [2016-05-04 04:04:17,256] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@620c8641{/,null,AVAILABLE}
+INFO  [2016-05-04 04:04:17,303] org.eclipse.jetty.server.ServerConnector: Started application@48f5bde6{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-04 04:04:17,303] org.eclipse.jetty.server.ServerConnector: Started admin@525d79f0{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-04 04:04:17,303] org.eclipse.jetty.server.Server: Started @9870ms
+INFO  [2016-05-04 04:05:16,222] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=9811f596-a60d-4f42-9da2-40a0da8013c0;Version=1;Path=/
+INFO  [2016-05-04 04:05:17,641] cs425.resources.ForumsResource: getAll: 0 forums
+INFO  [2016-05-04 04:05:25,336] cs425.auth.Accounts: logout: admin as ADMIN
+INFO  [2016-05-04 04:06:01,819] cs425.resources.FacultyResource: add f1: (Professor,2010,Good,{},{})
+INFO  [2016-05-04 04:07:11,870] cs425.resources.StudentsResource: add s1: (2015,fall,M2,MS)
+INFO  [2016-05-04 04:07:59,191] cs425.resources.StudentsResource: add s2: (2015,Fall,B2,BS)
+INFO  [2016-05-04 04:08:21,425] cs425.auth.Accounts: login OK: f1 as USER, SessionToken=2a91cfe8-04f6-4a9b-9206-a25e2b108837;Version=1;Path=/
+INFO  [2016-05-04 04:08:22,088] cs425.resources.FacultyResource: get f1
+INFO  [2016-05-04 04:08:22,587] cs425.resources.ProjectsResource: get f1: 0 projects
+INFO  [2016-05-04 04:08:30,696] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=d045e011-796d-47e8-9eb3-be1a1a4f96c9;Version=1;Path=/
+INFO  [2016-05-04 04:08:31,795] cs425.resources.ForumsResource: getAll: 0 forums
+INFO  [2016-05-04 04:09:27,402] cs425.resources.CoursesResource: add a051b349-b7ee-4668-b55c-052a8f50689a/c96273bc-3a9c-45f4-834f-4ae89df7f35d: (CS425,Fall,f1,3)
+INFO  [2016-05-04 04:09:54,903] cs425.resources.CoursesResource: add 6a54335b-d41d-4ee4-b3d0-ccd1fc6ca2e3/77b340a0-ceb6-4949-8baf-4f7790564ad2: (cs425,fall,f1,3)
+INFO  [2016-05-04 04:09:59,496] cs425.resources.CoursesResource: delete 6a54335b-d41d-4ee4-b3d0-ccd1fc6ca2e3
+INFO  [2016-05-04 04:10:34,653] cs425.resources.FacultyResource: get f1
+INFO  [2016-05-04 04:10:42,125] cs425.auth.Accounts: login OK: f1 as USER, SessionToken=ea436d93-7c9c-4bac-9969-9a5b9155f42b;Version=1;Path=/
+INFO  [2016-05-04 04:10:42,433] cs425.resources.FacultyResource: get f1
+INFO  [2016-05-04 04:10:42,790] cs425.resources.ProjectsResource: get f1: 0 projects
+INFO  [2016-05-04 04:11:02,096] cs425.resources.GroupUsersResource: add Faculty1 by f1: (null,c96273bc-3a9c-45f4-834f-4ae89df7f35d,null,null)
+INFO  [2016-05-04 04:11:16,273] cs425.auth.Accounts: login OK: s1 as USER, SessionToken=5b80b813-a182-4b03-861d-66bad9625d1f;Version=1;Path=/
+INFO  [2016-05-04 04:11:16,970] cs425.resources.StudentsResource: get s1
+INFO  [2016-05-04 04:11:17,329] cs425.resources.InternshipsResource: get s1: 0 internships
+INFO  [2016-05-04 04:11:28,127] cs425.resources.GroupUsersResource: add student1 by s1: (null,c96273bc-3a9c-45f4-834f-4ae89df7f35d,null,null)
+INFO  [2016-05-04 04:11:37,897] cs425.auth.Accounts: logout: s1 as USER
+INFO  [2016-05-04 04:11:42,967] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=23368b4a-ce4d-47c3-b5cb-82f85a69734a;Version=1;Path=/
+INFO  [2016-05-04 04:11:47,423] cs425.resources.ForumsResource: getAll: 0 forums
+INFO  [2016-05-04 04:11:52,348] cs425.resources.GroupUsersResource: update Faculty1: (f1,c96273bc-3a9c-45f4-834f-4ae89df7f35d,no,yes)
+INFO  [2016-05-04 04:11:59,052] cs425.resources.GroupUsersResource: update student1: (s1,c96273bc-3a9c-45f4-834f-4ae89df7f35d,no,yes)
+INFO  [2016-05-04 04:12:31,815] cs425.resources.TakeResource: add s1: (a051b349-b7ee-4668-b55c-052a8f50689a,A,yes)
+INFO  [2016-05-04 04:12:40,619] cs425.resources.ForumsResource: getAll: 0 forums
+INFO  [2016-05-04 04:13:14,131] cs425.resources.TAResource: add ca448e60-5a8f-4c9e-951d-619a200f1d16: (a051b349-b7ee-4668-b55c-052a8f50689a,s1)
+INFO  [2016-05-04 04:13:28,086] cs425.resources.TAResource: add 8699214e-5ba8-413a-b282-51f4b0bc415d: (a051b349-b7ee-4668-b55c-052a8f50689a,s2)
+INFO  [2016-05-04 04:14:16,696] cs425.auth.Accounts: login OK: s2 as USER, SessionToken=3e5dd3a1-ee9b-4dd9-9c77-f848aa75e401;Version=1;Path=/
+INFO  [2016-05-04 04:14:16,833] cs425.resources.StudentsResource: get s2
+INFO  [2016-05-04 04:14:17,307] cs425.resources.InternshipsResource: get s2: 0 internships
+INFO  [2016-05-04 04:14:24,329] cs425.resources.GroupUsersResource: add student2 by s2: (null,c96273bc-3a9c-45f4-834f-4ae89df7f35d,null,null)
+INFO  [2016-05-04 04:14:34,778] cs425.auth.Accounts: logout: s2 as USER
+INFO  [2016-05-04 04:14:44,288] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=70e8a046-e163-4e58-aa4d-032f342af1d7;Version=1;Path=/
+INFO  [2016-05-04 04:14:47,051] cs425.resources.ForumsResource: getAll: 0 forums
+INFO  [2016-05-04 04:14:56,004] cs425.resources.GroupUsersResource: update student2: (s2,c96273bc-3a9c-45f4-834f-4ae89df7f35d,no,yes)
+INFO  [2016-05-04 04:15:04,189] cs425.resources.GroupUsersResource: update Faculty1: (f1,c96273bc-3a9c-45f4-834f-4ae89df7f35d,yes,yes)
+INFO  [2016-05-04 04:15:16,944] cs425.resources.GroupUsersResource: update student2: (s2,c96273bc-3a9c-45f4-834f-4ae89df7f35d,yes,yes)
+INFO  [2016-05-04 04:15:48,644] cs425.auth.Accounts: login OK: student2 as GROUPUSER, SessionToken=507d68d3-3938-42fc-ade8-76bfff2fb3e1;Version=1;Path=/
+INFO  [2016-05-04 04:15:49,436] cs425.auth.Accounts: login OK: student2 as GROUPUSER, SessionToken=c7b62bba-28eb-4cb2-94b5-5bf5bd25097b;Version=1;Path=/
+INFO  [2016-05-04 04:15:49,791] cs425.resources.ForumsResource: get c96273bc-3a9c-45f4-834f-4ae89df7f35d: 0 forums
+INFO  [2016-05-04 04:15:49,792] cs425.resources.ForumsResource: get c96273bc-3a9c-45f4-834f-4ae89df7f35d: 0 forums
+INFO  [2016-05-04 04:16:15,841] cs425.resources.ForumsResource: add c96273bc-3a9c-45f4-834f-4ae89df7f35d/c84cb43f-7b18-46d0-b701-de92775e709d by student2: (CS425_fall,yes,5)
+INFO  [2016-05-04 04:16:15,935] cs425.resources.ForumsResource: get c96273bc-3a9c-45f4-834f-4ae89df7f35d: 1 forums
+INFO  [2016-05-04 04:16:30,654] cs425.resources.GroupUsersResource: update student1: (s1,c96273bc-3a9c-45f4-834f-4ae89df7f35d,no,yes)
+INFO  [2016-05-04 04:16:45,127] cs425.auth.Accounts: login OK: student1 as GROUPUSER, SessionToken=3abdb3aa-a6df-4a7c-be57-07f23b4c07ea;Version=1;Path=/
+INFO  [2016-05-04 04:16:45,697] cs425.resources.ForumsResource: get c96273bc-3a9c-45f4-834f-4ae89df7f35d: 1 forums
+INFO  [2016-05-04 04:16:45,703] cs425.resources.ForumsResource: get c96273bc-3a9c-45f4-834f-4ae89df7f35d: 1 forums
+INFO  [2016-05-04 04:16:45,769] cs425.resources.CommentsResource: get c96273bc-3a9c-45f4-834f-4ae89df7f35d/c84cb43f-7b18-46d0-b701-de92775e709d: 0 comments
+INFO  [2016-05-04 04:16:58,861] cs425.resources.CommentsResource: add c96273bc-3a9c-45f4-834f-4ae89df7f35d/c84cb43f-7b18-46d0-b701-de92775e709d by student1: (Good,I like it,null)
+INFO  [2016-05-04 04:17:24,383] cs425.resources.CommentsResource: get c96273bc-3a9c-45f4-834f-4ae89df7f35d/c84cb43f-7b18-46d0-b701-de92775e709d: 1 comments
+INFO  [2016-05-04 04:20:53,681] cs425.resources.TakeResource: GPAsbyins cs425
+INFO  [2016-05-04 04:23:49,027] cs425.resources.TakeResource: gradesbyins f1
+INFO  [2016-05-04 04:24:23,059] cs425.resources.TakeResource: GPAsbyins CS425
+INFO  [2016-05-04 14:08:27,345] cs425.resources.FacultyResource: add f1: (Professor,2010,Good,{},{})
+INFO  [2016-05-04 14:10:25,365] cs425.resources.StudentsResource: add s1: (2015,fall,M2,MS)
+INFO  [2016-05-04 14:11:17,854] cs425.resources.StudentsResource: add s2: (2015,Fall,U2,BS)
+INFO  [2016-05-04 14:13:22,242] cs425.resources.FacultyResource: add f2: (Assistant Professor,2010,Yes,{},{})
+INFO  [2016-05-04 14:13:34,406] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=ef2f3698-2a19-4199-8f14-762294cb4ccf;Version=1;Path=/
+INFO  [2016-05-04 14:13:36,587] cs425.resources.ForumsResource: getAll: 0 forums
+INFO  [2016-05-04 14:14:55,405] cs425.auth.Accounts: logout: admin as ADMIN
+INFO  [2016-05-04 14:16:20,500] cs425.auth.Accounts: login OK: admin as ADMIN, SessionToken=cf2b8dd5-8445-44c6-aabe-f2f0a908b774;Version=1;Path=/
+INFO  [2016-05-04 14:16:21,109] cs425.resources.ForumsResource: getAll: 0 forums
+INFO  [2016-05-04 21:53:12,676] org.eclipse.jetty.server.ServerConnector: Stopped application@48f5bde6{HTTP/1.1}{0.0.0.0:8080}
+INFO  [2016-05-04 21:53:12,680] org.eclipse.jetty.server.ServerConnector: Stopped admin@525d79f0{HTTP/1.1}{0.0.0.0:8081}
+INFO  [2016-05-04 21:53:12,689] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@620c8641{/,null,UNAVAILABLE}
+INFO  [2016-05-04 21:53:12,715] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@43e9089{/,null,UNAVAILABLE}

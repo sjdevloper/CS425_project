@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Welcome To IIT Group!</title>
+
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container">
+
+<h1>Welcome To IIT Group!</h1>
+
+ <div class="col-sm-1 middle-border"></div>
+ <div class="col-sm-1"></div>	
+    <div class="col-sm-5">
+   	<div class="form-box">
+		<div class="form-top">
+			<div class="form-top-left">
+				<h3>Sign up for group user now</h3>
+	    		<p>Fill in the form below to get instant access:</p>
+			</div>
+		</div>
+       <div class="form-bottom">
+       		<form role="form" action="" method="post" class="registration-form">
+       			<div class="form-group">
+    				Choose a group <select id="groupID"></select>
+       			</div>
+    			<div class="form-group">
+    				<label class="sr-only" for="groupUser">groupUser</label>
+        			<input type="text" name="form-groupUser" placeholder="Group Username..." class="form-groupUser form-control" id="groupUser">
+       	 		</div>
+       			<div class="form-group">
+    				<label class="sr-only" for="form-groupPwd">groupPwd</label>
+        			<input type="password" name="form-groupPwd" placeholder="Group Password..." class="form-groupPwd form-control" id="groupPwd">
+       			</div>
+		        <button type="button" class="btn btn-primary" onclick="signup()">
+		        Sign up</button>
+		    </form>
+		</div>
+		</div>
+	</div>
+	</div>
+
+<script>
+
+$.ajax({
+	url: "/app/groups",
+	type: "GET",
+	success: render_groups
+});
+
+function render_groups(groups)
+{
+	var select_html = "";
+	
+	for (var i = 0; i < groups.length; ++i)
+	{
+		select_html += "<option value='"+groups[i].id+"'>"
+			+groups[i].name+"</option>";
+	}
+	
+	$("#groupID").html(select_html);
+}
+
+function signup() {
+	
+  var groupUser = {
+	groupID: $("#groupID").val(),
+	groupUser: $("#groupUser").val(),
+	groupPwd: $("#groupPwd").val()};
+  
+  $.ajax({
+    type: "POST",
+    url: "/app/groupUsers",
+    data: groupUser,
+    success: function(data) {
+      window.location.href = "/group_user_login.html";
+    }
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Welcome!</title>
+
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="user.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container">
+
+<h1>Welcome, groupUser!</h1>
+
+<form role="form">
+  <div class="row"><div class="form-group col-xs-4">
+    <label for="username">groupUser</label>
+    <input type="text" class="form-control" id="groupUser">
+  </div></div>
+  <div class="row"><div class="form-group col-xs-4">
+    <label for="password">groupPwd</label>
+    <input type="password" class="form-control" id="groupPwd">
+  </div></div>
+  <button type="button" class="btn btn-primary" onclick="login()">
+    Login
+  </button>
+</form>
+
+</div>
+
+<script>
+function login()
+{
+	var homepages = {
+		error: "error.html",
+		pending: "pending.html",
+		admin: "admin.html",
+		groupUser: "forum_list.html",
+		groupModerator: "forum_list_mod.html"};
+
+	var credentials = {
+		groupUser: $("#groupUser").val(),
+		groupPwd: $("#groupPwd").val()};
+	
+	groupUser_login(credentials, homepages);
+}
+</script>
+</body>
+</html>

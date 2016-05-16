@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Welcome To IIT!</title>
+
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+
+<h2>Welcome To IIT, student!</h2>
+
+ <div class="col-sm-1 middle-border"></div>
+ <div class="col-sm-1"></div>	
+    <div class="col-sm-5">
+   	<div class="form-box">
+		<div class="form-top">
+			<div class="form-top-left">
+				<h3>Sign up now</h3>
+	    		<p>Fill in the form below to get instant access:</p>
+			</div>
+		</div>
+       <div class="form-bottom">
+       		<form role="form" action="" method="post" class="registration-form">
+    			<div class="form-group">
+    				<label class="sr-only" for="form-username">Username</label>
+        			<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="username">
+       	 		</div>
+       	 		<div class="form-group">
+    				<label class="sr-only" for="form-name">Name</label>
+        			<input type="text" name="form-name" placeholder="Name..." class="form-name form-control" id="name">
+        		</div>
+       			<div class="form-group">
+    				<label class="sr-only" for="form-password">Password</label>
+        			<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="password">
+       			</div>
+		        <div class="form-group">
+		    		<label class="sr-only" for="form-email">Email</label>
+		        	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="email">
+		        	<input type="checkbox" id ="publicEmail"> Marked as public
+				</div>
+				  <div class="form-group">
+		        	<label class="sr-only" for="form-yearBegan">YearBegan</label>
+		        	<input type="text" name="form-yearBegan" placeholder="YearBegan..." 
+		        	class="form-yearBegan form-control" id="yearBegan">
+		        	<input type="checkbox" id ="publicYearBegan"> Marked as public
+		        </div>
+		        <div class="form-group">
+		        	<label class="sr-only" for="form-semesterBegan">semesterBegan</label>
+		        	<input type="text" name="form-semesterBegan" placeholder="SemesterBegan..." 
+		        	class="form-semesterBegan form-control" id="semesterBegan">
+		        	<input type="checkbox" id ="SemesterBegan"> Marked as public
+		        </div>
+		        <div class="form-group">
+		        	<label class="sr-only" for="form-degreeStatus">DegreeStatus</label>
+		        	<input type="text" name="form-degreeStatus" placeholder="DegreeStatus..." 
+		        	class="form-degreeStatus form-control" id="degreeStatus">	
+		        	<input type="checkbox" id ="publicDegreeStatus"> Marked as public
+		        </div>
+		        <div class="form-group">
+		        	<label class="sr-only" for="form-degreeType">DegreeStatus</label>
+		        	<input type="text" name="form-degreeType" placeholder="DegreeType..." 
+		        	class="form-degreeType form-control" id="degreeType">	
+		        	<input type="checkbox" id ="publicDegreeType"> Marked as public
+		        </div>	
+		        <div class="form-group">
+		        	<input type="checkbox" id ="publicGPA"> Marked GPA as public
+		        </div>	
+		        <button type="button" class="btn btn-primary" onclick="signup()">
+		        Sign up</button>
+		    </form>
+		</div>
+		</div>
+	</div>
+	</div>
+
+<script>
+function signup() {
+	
+  var student = {
+    username: $("#username").val(),
+    name: $("#name").val(),
+    password: $("#password").val(),
+    email: $("#email").val(),
+    yearBegan: Number($("#yearBegan").val()),
+    semesterBegan: $("#semesterBegan").val(),
+    degreeStatus:$("#degreeStatus").val(),
+    degreeType:$("#degreeType").val(),
+    publicEmail: $("#publicEmail").prop("checked")? "yes" :"no",
+    publicYearBegan: $("#publicYearBegan").prop("checked")? "yes" :"no",
+    publicSemesterBegan: $("#publicSemesterBegan").prop("checked")? "yes" :"no",
+    publicDegreeStatus: $("#publicDegreeStatus").prop("checked")? "yes" :"no",
+    publicDegreeType: $("#publicDegreeType").prop("checked")? "yes" :"no",
+    publicGPA: $("#publicGPA").prop("checked")? "yes" :"no"
+    }
+  
+  $.ajax({
+    type: "POST",
+    url: "/app/student",
+    data: student,
+    success: function(data) {
+      window.location.href = "/";
+    }
+  });
+}
+</script>
+</body>
+</html>

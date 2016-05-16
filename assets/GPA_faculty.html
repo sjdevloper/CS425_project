@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<script src="static/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="user.js"></script>
+	
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h4>the past average GPA by faculty</h4>
+    </div>
+
+	<p>
+	Course Title <input type='text' id='title'>
+	<button onclick='do_search_all()'>Search All Faculty</button>
+	<br> 
+	
+	<p>  
+	Course Title <input type='text' id='title2'>
+	Faculty Username: <input type='text' id='username'>
+	<button onclick='do_search()'>Search This Faculty</button>  
+	
+    <p>
+    <div id="GPA"></div>
+    
+</div>
+
+<script>
+
+$(document).ready(main);
+
+function main()
+{
+	
+}
+
+function render_GPAs(GPAs){
+	var min_GPA = 0.0;
+	var max_GPA = 0.0;
+	
+	if (GPAs.length == 0)
+	{
+		$("#GPA").html("<p>Not found.");
+		return;
+	}
+		
+	var GPAs_html = "<table class='table'><thead><tr>"
+				+"<th>Instructor</th>"
+				+"<th>Max_GPA</th>"
+		        +"<th>Min_GPA</th></tr></thead><tbody> ";
+			        
+	for (var i = 0; i < GPAs.length; ++i){
+		if (GPAs[i].min == 'A'){
+			min_GPA = 4.0;
+		}	
+		else if (GPAs[i].min == 'B'){
+			min_GPA = 3.0;
+		}	
+		else if (GPAs[i].min == 'C'){
+			min_GPA = 2.0;
+		}	
+		else if (GPAs[i].min == 'D'){
+			min_GPA = 1.0;
+		}	
+		else{
+			min_GPA = 0;
+		}
+		
+		if (GPAs[i].max == 'A'){
+			max_GPA = 4.0;
+		}	
+		else if (GPAs[i].max == 'B'){
+			max_GPA = 3.0;
+		}	
+		else if (GPAs[i].max == 'C'){
+			max_GPA = 2.0;
+		}	
+		else if (GPAs[i].max == 'D'){
+			max_GPA = 1.0;
+		}	
+		else{
+			max_GPA = 0;
+		}
+					
+		GPAs_html += "<tr><td>"+GPAs[i].instructor+"</td>";
+		GPAs_html += "<td>"+min_GPA.toFixed(1)+"</td>";
+		GPAs_html += "<td>"+max_GPA.toFixed(1)+"</td>";
+	}
+	
+	GPAs_html += "</tbody></table>";
+	
+	
+	$("#GPA").html(GPAs_html);
+}
+
+function do_search(){	
+	var title = $("#title2").val();
+	var username = $("#username").val();
+	
+	if (title == "" || username == "")
+		return;
+
+	$.ajax({
+		url: "/app/take/GPAbyaInstructor/"+title+"/"+username,
+		type: "GET",
+		success: render_GPAs
+	});
+}
+
+function do_search_all(){
+	var title = $("#title").val();
+	
+	if (title == "")
+		return;
+
+	$.ajax({
+		url: "/app/take/GPAbyallInstructor/"+title,
+		type: "GET",
+		success: render_GPAs
+	});
+}
+</script>
+</body>
+</html>

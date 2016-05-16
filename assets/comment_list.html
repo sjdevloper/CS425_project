@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 5 Comments for Student</title>
+
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<script src="static/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h3>Top 5 Comments for Student</h3>
+    </div>
+
+	<p>
+	Student Username: <input type='text' id='search_str'>
+	<button onclick='do_search()'>Search</button>   
+	
+	<br> 
+	
+    <p>
+    <div id="comments">(*Please input a student username to 
+    search for the 5 most recently entered comments)</div>
+    
+</div>
+
+<script>
+function render_comments(comments){
+	if (comments.length == 0)
+	{
+		$("#comments").html("<p>No comments found.");
+		return;
+	}
+	
+	var comments_html = "<table class='table'><thead><tr>"
+					+"<th>ID</th>"
+					+"<th>Forum</th>"
+					+"<th>Topic</th>"
+			        +"<th>Message</th>"
+			        +"<th>Author</th></tr></thead><tbody> ";
+	
+	for (var i = 0; i < comments.length; ++i){
+		comments_html += "<tr><td>"+comments[i].id+"</td>";
+		comments_html += "<td>"+comments[i].title+"</td>";
+		comments_html += "<td>"+comments[i].topic+"</td>";
+		comments_html += "<td>"+comments[i].message+"</td>";
+		comments_html += "<td>"+comments[i].author+"</td></tr>";
+	}
+   
+	comments_html += "</tbody></table>";
+	
+	$("#comments").html(comments_html);
+}
+
+function do_search(){
+	
+	var search_str = $("#search_str").val();
+	
+	if (search_str == "")
+		return;
+
+	$.ajax({
+		url: "/app/public/comments-by-user/"+search_str,
+		type: "GET",
+		success: render_comments
+	});
+}
+</script>
+</body>
+</html>

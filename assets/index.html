@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Welcome Admin!</title>
+
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="user.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>			
+				<li><a href="group_user_login.html">GROUP USER SIGN IN</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h2>
+					ILLIONIS INSTITUE OF TECHNOLOGY
+				</h2>
+				<p>
+					This is a private, technology-focused, research university
+					 offering undergraduate and graduate degrees in engineering, science, architecture, business, design, human sciences, applied technology, and law.
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="/">Learn more</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	  	<div class="row">
+			<div class="col-md-4">	
+				<div class="panel panel-default">
+					<div class="panel-heading"><h3 class="panel-title"><strong>Sign In </strong></h3></div>
+						<div class="panel-body">
+				  			<form role="form">
+							<div class="form-group">
+					   			<label for="username">Username </label>
+					   			<input type="email" class="form-control" id="username" placeholder="Enter username">
+							</div>
+						    <div class="form-group">
+								<label for="password">Password </label>
+								<input type="password" class="form-control" id="password" placeholder="Enter Password">
+						    </div>
+								<button type="button" class="btn btn-sm btn-primary " onclick="login()">Sign in</button>
+							</form>
+			 			</div>
+				</div>
+			</div>	
+			<div class="col-md-4">
+				<div class="panel panel-default">
+			  		<div class="panel-heading"><h3 class="panel-title"><strong>Sign up </strong></h3></div>
+						<div class="panel-body">
+							<a href="/faculty_reg.html" class="btn btn-lg btn-primary btn-block">Faculty</a>
+					    	<div class="omb_login">
+								<div class="row omb_row-sm-offset-3 omb_loginOr">
+								<hr class="omb_hrOr">
+								</div>
+							</div>
+							<a href="student_reg.html" class="btn btn-lg btn-info btn-block">Student</a>
+						</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+			  		<div class="panel-heading"><h3 class="panel-title"><strong>Link </strong></h3></div>
+						<div class="panel-body">
+						    <a href="/group_list.html" class="btn btn-lg btn-link btn-sm">Top 5 Comments in Groups</a>
+						    <a href="/app/oracle/group_list.php" class="btn btn-lg btn-link btn-sm">Top 5 Comments in Groups (PHP)</a>
+							<a href="/comment_list.html" class="btn btn-lg btn-link btn-sm">Top 5 Comments for Student</a>
+							<a href="/pop_group.html" class="btn btn-lg btn-link btn-sm">Most Commented Group/Club/Course and Topic</a>
+							<a href="/moderator_list.html" class="btn btn-lg btn-link btn-sm">Groups and Moderators</a>
+							<a href="/avgGPA_faculty.html" class="btn btn-lg btn-link btn-sm">Average GPA </a>
+							<a href="/GPA_faculty.html" class="btn btn-lg btn-link btn-sm">Highest and Lowest GPA </a>
+							<a href="/student_list.html" class="btn btn-lg btn-link btn-sm">Public Students Information</a>
+							<a href="/faculty_list.html" class="btn btn-lg btn-link btn-sm">Public Faculty Information</a>
+							
+						</div>
+				</div>
+			</div>
+		 </div>
+</div>
+
+
+<script>
+function login()
+{
+	var homepages = {
+		error: "error.html",
+		admin: "admin.html",
+		student: "student.html",
+		faculty: "faculty.html"};
+
+	var credentials = {
+		username: $("#username").val(),
+		password: $("#password").val()};
+
+	user_login(credentials, homepages);
+}
+</script>
+</body>
+</html>

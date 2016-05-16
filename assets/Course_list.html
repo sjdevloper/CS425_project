@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Welcome Student!</title>
+
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="user.js"></script>
+<script src="table.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Course registration!</h1>
+
+<h4>
+<button type="button" class="btn btn-primary"
+  id="logout" onclick="user_logout()"></button>
+</h4>
+
+<p>
+<div id="course"></div>
+
+</div>
+
+<script>
+$(document).ready(main);
+
+var username = user_get();
+
+function main() {
+
+  $("#logout").html("Logout "+username);
+}
+
+table_create({
+    url: "/app/course",
+    id: "course",
+    title: "course",
+    headers: [
+      {id:"id"},
+      {title:"title"},
+      {term:"term"},
+      {instructor:"instructor"},
+      {TA:"TA"},],
+    order_by: "id"
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group Forums (Moderator)</title>
+
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<script src="static/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="user.js"></script>	
+	<script src="static/react.js"></script>
+	<script src="static/react-dom.js"></script>
+	<script src="static/babel-browser.min.js"></script>
+	<script type="text/babel" src="mydialogbox.js"></script>
+	<script type="text/babel" src="mytable.js"></script>
+	<script type="text/babel" src="ajaxtable.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container" role="main">
+    <div class="jumbotron">
+        <h2>Group forums and comments (Moderator)</h2>
+    </div>
+
+	<div id="groupUsers">Loading group users ...</div>
+	<br>
+    <div id="forums">Loading forums ... </div>
+    
+    <hr>
+
+    <div id="comments">Loading comments ... </div>
+    
+</div>
+<script>
+var groupID = groupID_get();
+var forumUrlBase = "/app/forums/"+groupID;
+var commentUrlBase = "/app/comments/"+groupID;
+</script>
+<script type="text/babel">
+createAjaxTable({
+	node: "groupUsers",
+	title: "Group Users",
+
+	url: "/app/groupUsers",
+	itemUrl: function(item)
+	{
+		return "/app/groupUsers/"+item.groupUser;
+	},
+
+	onAdd: null,
+	onDelete: null,
+
+	columns: [{
+		title: "Group User",
+		field: "groupUser",
+		readonly: true,
+	},{
+		title: "User Name",
+		field: "username",
+		readonly: true,
+	},{
+		title: "isModerator",
+		field: "isModerator",
+		readonly: true,
+	},{
+		title: "Approved",
+		field: "approved"
+	}],
+	orderBy: "groupUser",
+	filterBy: function(groupUser)
+	{
+		return groupUser.groupID == groupID;
+	}
+});
+
+createAjaxTable({
+	node: "forums",
+	title: "Forums",
+
+	url: forumUrlBase,
+	itemUrl: function(item)
+	{
+		return forumUrlBase+"/"+item.id;
+	},
+
+	addText: "add forum",
+
+	columns: [{
+		title: "Forum Title",
+		field: "title"
+	},{
+		title: "Group Name",
+		field: "groupName",
+		readonly: true,
+	},{
+		title: "Approved",
+		field: "approved",
+	},{
+		title: "Bonus",
+		field: "bonus",
+	},{
+		title: "Creator",
+		field: "creator",
+		readonly: true,
+	}],
+	orderBy: "title"
+});
+
+function show_forum_comments(forum)
+{
+	var commentUrl = commentUrlBase+"/"+forum.id;
+
+	createAjaxTable({
+		node: "comments-"+forum.id,
+		title: "Comments for "+forum.title,
+
+		url: commentUrl, 
+		itemUrl: function(item)
+		{
+			return commentUrl+"/"+item.id;
+		},
+
+		addText: "add comment",
+
+		columns: [{
+			title: "Forum",
+			field: "title",
+			readonly: true,
+		},{
+			title: "ID",
+			field: "id",
+			readonly: true,
+		},{
+			title: "Topic",
+			field: "topic",
+		},{
+			title: "Message",
+			field: "message",
+		},{
+			title: "Author",
+			field: "author",
+			readonly: true,
+		},{
+			title: "Bonus",
+			field: "bonus",
+		}],
+		orderBy: "id"
+	});
+}
+
+$.ajax({
+	url: forumUrlBase,
+	type: "GET",
+	success: function(forums)
+	{
+		var comments_html = "";
+		for (var i = 0; i < forums.length; ++i)
+		{
+			comments_html += "<p>&nbsp</p>";
+			comments_html += "<div id='comments-"+forums[i].id+"'></div>";
+		}
+
+		$("#comments").html(comments_html);
+
+		for (var i = 0; i < forums.length; ++i)
+		{
+			show_forum_comments(forums[i]);
+		}
+	}
+});
+</script>
+
+</body>
+</html>

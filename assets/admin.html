@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Welcome Admin!</title>
+
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="user.js"></script>
+<script src="static/react.js"></script>
+<script src="static/react-dom.js"></script>
+<script src="static/babel-browser.min.js"></script>
+<script type="text/babel" src="mydialogbox.js"></script>
+<script type="text/babel" src="mytable.js"></script>
+<script type="text/babel" src="ajaxtable.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+
+<h1>Welcome Admin!</h1>
+
+<h4>
+<button type="button" class="btn btn-primary"
+  id="logout" onclick="user_logout()"></button>
+</h4>
+<br>
+
+<p>
+<div id="users">Loading users ...</div>
+<br>
+<p>
+<div id="students">Loading students ...</div>
+<br>
+<p>
+<div id="internships">Loading internships ...</div>
+<br>
+<p>
+<div id="faculty">Loading faculty ...</div>
+<br>
+<p>
+<div id="projects">Loading projects ...</div>
+<br>
+<p>
+<div id="groupUsers">Loading group users ...</div>
+<br>
+<p>
+<div id="groups">Loading groups ...</div>
+<br>
+<p>
+<div id="courses">Loading courses ...</div>
+<br>
+<p>
+<div id="TAs">Loading TAs ...</div>
+<br>
+<p>
+<div id="takes">Loading taken courses ...</div>
+<br>
+<p>
+<div id="forums">Loading forums ...</div>
+<br>
+<p>
+<div id="comments">Loading comments ...</div>
+<br>
+</div>
+
+<script>
+$(document).ready(main);
+
+var username = user_get();
+
+function main()
+{
+	$("#logout").html("Logout "+username);
+}
+
+</script>
+
+<script type="text/babel">
+createAjaxTable({
+	node: "users",
+	title: "Users",
+
+	url: "/app/users",
+	itemUrl: function(item)
+	{
+		return "/app/users/"+item.username;
+	},
+
+	addText: "add user",
+
+	columns: [{
+		title: "User Name",
+		field: "username",
+	},{
+		title: "Password",
+		field: "password"
+	},{
+		title: "Type (faculty/student)",
+		field: "type",
+	}],
+	orderBy: "username"
+});
+
+createAjaxTable({
+	node: "students",
+	title: "Students",
+
+	url: "/app/student",
+	itemUrl: function(item)
+	{
+		return "/app/student/"+item.username;
+	},
+
+	addText: "add student",
+
+	columns: [{
+		title: "User Name",
+		field: "username",
+	},{
+		title: "Name",
+		field: "name"
+	},{
+		title: "Password",
+		field: "password",
+	},{
+		title: "GPA",
+		field: "gpa",
+	},{
+		title: "Email",
+		field: "email",
+	},{
+		title: "YearBegan",
+		field: "yearBegan"
+	},{
+		title: "SemesterBegan",
+		field: "semesterBegan"
+	},{
+		title: "Degree Status",
+		field: "degreeStatus"
+	},{
+		title: "Degree Type",
+		field: "degreeType"
+	},{
+		title: "Public Email",
+		field: "publicEmail",
+	},{
+		title: "public YearBegan",
+		field: "publicYearBegan"
+	},{
+		title: "public SemesterBegan",
+		field: "publicSemesterBegan"
+	},{
+		title: "public DegreeStatus",
+		field: "publicDegreeStatus"
+	},{
+		title: "public DegreeType",
+		field: "publicDegreeType",
+	},{
+		title: "public GPA",
+		field: "publicGPA"
+	}],
+	orderBy: "username"
+});
+
+createAjaxTable({
+	node: "internships",
+	title: "Internships",
+
+	url: "/app/internships",
+	itemUrl: function(item)
+	{
+	},
+
+	onAdd: null,
+	onModify: null,
+	onDelete: null,
+
+	columns: [{
+		title: "User Name",
+		field: "username"
+	},{
+		title: "Internship",
+		field: "internship"
+	},{
+		title: "Public",
+		field: "publicInternship"
+	}],
+	orderBy: "username"
+});
+
+createAjaxTable({
+	node: "faculty",
+	title: "Faculty",
+
+	url: "/app/faculty",
+	itemUrl: function(item)
+	{
+		return "/app/faculty/"+item.username;
+	},
+
+	addText: "add faculty",
+
+	columns: [{
+		title: "User Name",
+		field: "username",
+	},{
+		title: "Name",
+		field: "name"
+	},{
+		title: "Password",
+		field: "password",
+	},{
+		title: "Email",
+		field: "email",
+	},{
+		title: "Position",
+		field: "position"
+	},{
+		title: "yearJoined",
+		field: "yearJoined"
+	},{
+		title: "experience",
+		field: "experience",
+	},{
+		title: "Public Email",
+		field: "publicEmail"
+	},{
+		title: "Public Position",
+		field: "publicPosition"
+	},{
+		title: "Public YearJoined",
+		field: "publicYearJoined",
+	},{
+		title: "Public Experience",
+		field: "publicExperience"
+	}],
+	orderBy: "username"
+});
+
+createAjaxTable({
+	node: "projects",
+	title: "Projects",
+
+	url: "/app/projects/",
+	itemUrl: function(item)
+	{
+	},
+
+	onAdd: null,
+	onModify: null,
+	onDelete: null,
+
+	columns: [{
+		title: "User Name",
+		field: "username"
+	},{
+		title: "Project",
+		field: "project"
+	},{
+		title: "Public",
+		field: "publicProject"
+	}],
+	orderBy: "username"
+});
+
+createAjaxTable({
+	node: "groupUsers",
+	title: "GroupUsers",
+
+	url: "/app/groupUsers",
+	itemUrl: function(item)
+	{
+		return "/app/groupUsers/"+item.groupUser;
+	},
+
+	addText: "add group user",
+
+	columns: [{
+		title: "Group User",
+		field: "groupUser",
+	},{
+		title: "Password",
+		field: "groupPwd"
+	},{
+		title: "Group ID",
+		field: "groupID",
+	},{
+		title: "User Name",
+		field: "username",
+	},{
+		title: "isModerator",
+		field: "isModerator"
+	},{
+		title: "Approved",
+		field: "approved"
+	}],
+	orderBy: "groupID"
+});
+
+createAjaxTable({
+	node: "groups",
+	title: "Groups",
+
+	url: "/app/groups",
+	itemUrl: function(item)
+	{
+		return "/app/groups/"+item.id;
+	},
+
+	addText: "add group",
+
+	columns: [{
+		title: "GroupID",
+		field: "id",
+		readonly: true,
+	},{
+		title: "Name",
+		field: "name"
+	},{
+		title: "Type (courseGroup/otherGroup/club)",
+		field: "type",
+	}],
+	orderBy: "name"
+});
+
+createAjaxTable({
+	node: "courses",
+	title: "Courses",
+
+	url: "/app/courses",
+	itemUrl: function(item)
+	{
+		return "/app/courses/"+item.id;
+	},
+
+	addText: "add course",
+
+	columns: [{
+		title: "CourseID",
+		field: "id",
+		readonly: true,
+	},{
+		title: "Title",
+		field: "title",
+	},{
+		title: "Term",
+		field: "term"
+	},{
+		title: "Credit Hour",
+		field: "creditHour"
+	},{
+		title: "Instructor",
+		field: "instructor"
+	},{
+		title: "Course GroupID",
+		field: "groupID",
+		readonly: true
+	}],
+	orderBy: "title"
+});
+
+createAjaxTable({
+	node: "TAs",
+	title: "TAs",
+
+	url: "/app/TAs",
+	itemUrl: function(item)
+	{
+		return "/app/TAs/"+item.id;
+	},
+
+	addText: "add TA",
+
+	columns: [{
+		title: "CourseID",
+		field: "courseID"
+	},{
+		title: "CourseTA",
+		field: "courseTA"
+	}],
+	orderBy: "courseID"
+});
+
+createAjaxTable({
+	node: "takes",
+	title: "Taken cousers",
+
+	url: "/app/take",
+	itemUrl: function(item)
+	{
+		return "/app/take/"+ item.student + "/"+ item.courseID;
+	},
+
+	addText: "add takes",
+
+	columns: [{
+		title: "Student username",
+		field: "student"
+	},{
+		title: "CourseID",
+		field: "courseID"
+	},{
+		title: "Grade",
+		field: "grade"
+	},{
+		title: "Approved",
+		field: "approved"
+	}],
+	orderBy: "courseID"
+});
+
+createAjaxTable({
+	node: "forums",
+	title: "Forums",
+
+	url:  "/app/forums",
+	itemUrl: function(item)
+	{
+	},
+
+	onAdd: null,
+	onModify: null,
+	onDelete: null,
+
+	columns: [{
+		title: "Forum ID",
+		field: "id"
+	},{
+		title: "Forum Title",
+		field: "title"
+	},{
+		title: "Group Name",
+		field: "groupName",
+	},{
+		title: "Approved",
+		field: "approved",
+	},{
+		title: "Creator",
+		field: "creator",
+	},{
+		title: "Bonus",
+		field: "bonus",
+	}],
+	orderBy: "title"
+});
+
+createAjaxTable({
+	node: "comments",
+	title: "Comments",
+
+	url:  "/app/comments",
+	itemUrl: function(item)
+	{
+	},
+
+	onAdd: null,
+	onModify: null,
+	onDelete: null,
+
+	columns: [{
+		title: "Comment ID",
+		field: "id"
+	},{
+		title: "Topic",
+		field: "topic"
+	},{
+		title: "Message",
+		field: "message",
+	},{
+		title: "Author",
+		field: "author",
+	},{
+		title: "Forum ID",
+		field: "forumID",
+	},{
+		title: "Bonus",
+		field: "bonus",
+	}],
+	orderBy: "topic"
+});
+</script>
+
+</body>
+</html>

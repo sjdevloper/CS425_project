@@ -1,0 +1,43 @@
+{
+server: {
+  rootPath: "/app/",
+  requestLog: {
+    appenders: [{
+      type: "file",
+      currentLogFilename: "request.log",
+      archive: false
+    }]
+  }
+},
+
+database: {
+  driverClass: "oracle.jdbc.driver.OracleDriver",
+  url: "jdbc:oracle:thin:@fourier.cs.iit.edu:1521:orcl",
+  user: "sjiang20",
+  password: "sx20091218",
+  validationQuery: "SELECT 1 FROM DUAL"
+},
+
+logging: {
+  level: "DEBUG",
+  loggers: {
+    "org.eclipse.jetty": "INFO",
+    "org.hibernate.validator": "INFO"
+  },
+  appenders: [{
+    type: "console",
+    threshold: "DEBUG",
+    target: "stdout"
+  },{
+    type: "file",
+    threshold: "INFO",
+    currentLogFilename: "info.log",
+    archive: false
+  },{
+    type: "file",
+    threshold: "DEBUG",
+    currentLogFilename: "debug.log",
+    archive: false
+  }]
+}  
+}

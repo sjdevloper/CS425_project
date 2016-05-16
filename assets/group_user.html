@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<script src="static/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container" role="main">
+    <div class="jumbotron">
+        <h1 id="groupname"></h1>
+    </div>
+    
+    <p>
+    <div id="forums"></div>
+    
+</div>
+<script>
+$(document).ready(main);
+
+function main()
+{
+	$.ajax({
+		url: "/app/groupUsers/whoami",
+		type: "GET",
+		success: render_group
+	});
+}
+  
+function render_group(groupUser)
+{
+	$("#groupname").html("Welcome to Group "+groupUser.groupID);
+	
+	$.ajax({
+		url: "/app/forums/bygroup/"+groupUser.groupID,
+		type: "GET",
+		success: render_forums
+	});
+}
+
+function render_forums(forums)
+{
+	var forums_html = "";
+	
+	for (var i = 0; i < forums.length; ++i)
+	{
+		forums_html += "<div>";
+		forums_html += "<h3>"+forums[i].title+"</h3>";
+		forums_html += "<a href='/forum.html?"+forums[i].id+"'>Open Forum</a>";
+		forums_html += "</div>";		
+	}
+	
+	$("#forums").html(forums_html);
+}
+	
+</script>
+
+</body>
+</html>

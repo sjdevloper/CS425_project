@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Most Commented Group/Club/Course and Topic</title>
+
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<script src="static/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h3>Most Commented Group/Club/Course and Topic</h3>
+
+    </div>
+
+    <p><div id="pop-group">Loading Most Commented Group/Club/Course ...</div>
+    <p>&nbsp;
+    <p><div id="pop-topic">Loading Most Commented Topic ...</div>
+    
+</div>
+
+<script>
+function render_group(groupComments)
+{
+	var group = groupComments.group;
+	var comments = groupComments.comments;
+	
+	var comments_html = "<h4>The Most Popular Group "+group+"</h4>";
+	comments_html += "<table class='table'><thead><tr>"
+					+"<th>ID</th>"
+					+"<th>Forum</th>"
+					+"<th>Topic</th>"
+			        +"<th>Message</th>"
+			        +"<th>Author</th></tr></thead><tbody> ";
+	
+	for (var i = 0; i < comments.length; ++i){
+		comments_html += "<tr><td>"+comments[i].id+"</td>";
+		comments_html += "<td>"+comments[i].title+"</td>";
+		comments_html += "<td>"+comments[i].topic+"</td>";
+		comments_html += "<td>"+comments[i].message+"</td>";
+		comments_html += "<td>"+comments[i].author+"</td></tr>";
+	}
+   
+	comments_html += "</tbody></table>";
+	
+	$("#pop-group").html(comments_html);
+}
+
+function render_topic(topicComments)
+{
+	var topic = topicComments.topic;
+	var comments = topicComments.comments;
+		
+	var comments_html = "<h4>The Most Popular Topic "+topic+"</h4>";
+	comments_html += "<table class='table'><thead><tr>"
+					+"<th>ID</th>"
+					+"<th>Forum</th>"
+					+"<th>Topic</th>"
+			        +"<th>Message</th>"
+			        +"<th>Author</th></tr></thead><tbody> ";
+	
+	for (var i = 0; i < comments.length; ++i){
+		comments_html += "<tr><td>"+comments[i].id+"</td>";
+		comments_html += "<td>"+comments[i].title+"</td>";
+		comments_html += "<td>"+comments[i].topic+"</td>";
+		comments_html += "<td>"+comments[i].message+"</td>";
+		comments_html += "<td>"+comments[i].author+"</td></tr>";
+	}
+   
+	comments_html += "</tbody></table>";
+	
+	$("#pop-topic").html(comments_html);
+}
+
+$.ajax({
+	url: "/app/public/comments-pop-group/",
+	type: "GET",
+	success: render_group
+});
+
+$.ajax({
+	url: "/app/public/comments-pop-topic/",
+	type: "GET",
+	success: render_topic
+});
+</script>
+</body>
+</html>

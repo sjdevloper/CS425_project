@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Welcome Admin!</title>
+
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+<script src="static/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="user.js"></script>
+<script src="static/react.js"></script>
+<script src="static/react-dom.js"></script>
+<script src="static/babel-browser.min.js"></script>
+<script type="text/babel" src="mydialogbox.js"></script>
+<script type="text/babel" src="mytable.js"></script>
+<script type="text/babel" src="ajaxtable.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h2>Welcome to Group Moderators</h2>
+    </div>
+    
+    <p>
+	<div id="moderators">Loading moderators ...</div>   
+</div>
+
+<script type="text/babel">
+createAjaxTable({
+	node: "moderators",
+	title: "Moderators",
+
+	url: "/app/groups",
+	itemUrl: function(item)
+	{
+		return "/app/groups/"+item.id;
+	},
+
+	onAdd: null,
+	onModify: null,
+	onDelete: null,
+
+	columns: [{
+		title: "Group Name",
+		field: "name"
+	},{
+		title: "Group Type",
+		field: "type"
+	},{
+		title: "Moderators",
+		field: function(group)
+		{
+			if (group.moderators.length == 0)
+				return "";
+			return JSON.stringify(group.moderators);
+		}
+	}],
+	orderBy: "GroupID"
+});
+
+</script>
+
+</body>
+</html>

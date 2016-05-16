@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 5 Comments in Groups</title>
+
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<script src="static/jquery.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>     
+		</div>
+	</div>
+</nav>
+<div class="container" role="main">
+    <div class="jumbotron">
+        <h3>Top 5 Comments in Groups</h3>
+    </div>
+
+	<p>
+	Group ID/Name: <input type='text' id='search_str'>
+	<button onclick='do_search()'>Advanced Search</button>  
+	
+	<p>
+    <div id="comments">(*Please input a group id/name to 
+    search for the 5 most recently comments)</div>
+    
+    <br>
+      
+    <p>
+    <div id="groups"></div>
+    
+</div>
+<script>
+var all_groups = null;
+
+$(document).ready(main);
+
+function do_search()
+{
+	if (all_groups == null)
+		return;
+	
+	var search_str = $("#search_str").val();
+	
+	for (var i = 0; i < all_groups.length; ++i)
+	{
+		if ((search_str == "")
+			|| (all_groups[i].name.indexOf(search_str) != -1)
+			|| (all_groups[i].id.indexOf(search_str) != -1))
+		{
+			$("#group-"+all_groups[i].id).show();
+		}
+		else
+		{
+			$("#group-"+all_groups[i].id).hide();
+		}
+	}	
+}
+
+function main()
+{
+	$.ajax({
+		url: "/app/groups/",
+		type: "GET",
+		success: render_groups
+	});
+}
+  
+function render_groups(groups)
+{
+	all_groups = groups;
+	
+	var groups_html = "";
+	
+	for (var i = 0; i < groups.length; ++i)
+	{
+		groups_html += "<div id='group-"+groups[i].id+"'>";
+		groups_html += "<h4>"+groups[i].name+"</h4>";
+		groups_html += "<h6>(id: "+groups[i].id+")</h6>";
+		groups_html += "<div id='comments-"+groups[i].id+"'></div>";
+		groups_html += "</div>";
+	}
+	
+	$("#groups").html(groups_html);
+
+	for (var i = 0; i < groups.length; ++i)
+	{
+		get_comments(groups[i]);
+	}
+}
+
+function get_comments(group)
+{
+	$.ajax({
+		url: "/app/public/comments-by-groupID/"+group.id,
+		type: "GET",
+		success: function(comments)
+		{
+			render_comments(comments, group.id);
+		}
+	});
+}
+
+function render_comments(comments, groupID)
+{
+	var comments_html = "";
+	comments_html += "<div class='container' id ='comments'>"
+					+"<table class='table'><thead><tr>"
+					+"<th>ID</th>"
+					+"<th>Forum</th>"
+					+"<th>Topic</th>"
+			        +"<th>Message</th>"
+			        +"<th>Author</th></tr></thead><tbody> ";
+	
+	for (var i = 0; i < comments.length; ++i)
+	{
+		comments_html += "<tr><td>"+comments[i].id+"</td>";
+		comments_html += "<td>"+comments[i].title+"</td>";
+		comments_html += "<td>"+comments[i].topic+"</td>";
+		comments_html += "<td>"+comments[i].message+"</td>";
+		comments_html += "<td>"+comments[i].author+"</td></tr>";
+	}
+   
+	comments_html += "</tbody></table></div>";
+
+	$("#comments-"+groupID).html(comments_html);
+}
+	
+</script>
+
+</body>
+</html>
