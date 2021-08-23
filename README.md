@@ -21,7 +21,8 @@ For the red part, you need to check how to specify java classpath in your termin
 
 
 ### For login as Administration:
-Username: admin     Password: 1234
-The following link you can use:
+- Username: admin     Password: 1234
+- The following link you can use:
 http://127.0.0.1:8080/index.html (website home page)
-You can find all links on the home page, which include user/admin login, student/faculty registration, and link part all queries for projects. If logging as admin, you can find almost all tables on it.
+- You can find all links on the home page, which include user/admin login, student/faculty registration, and link part all queries for projects. 
+- If logging as admin, you can find almost all tables on it.
