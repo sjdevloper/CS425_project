@@ -20,7 +20,7 @@ For the red part, you need to check how to specify java classpath in your termin
 </ol>
 
 
->  *For login as Administration:
+### For login as Administration:
 Username: admin     Password: 1234
 The following link you can use:
 http://127.0.0.1:8080/index.html (website home page)
