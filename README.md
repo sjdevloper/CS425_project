@@ -26,3 +26,11 @@ For the red part, you need to check how to specify java classpath in your termin
 http://127.0.0.1:8080/index.html (website home page)
 - You can find all links on the home page, which include user/admin login, student/faculty registration, and link part all queries for projects. 
 - If logging as admin, you can find almost all tables on it.
+
+
+## Skills:
+ - Graph in E-R diagram to build relationship;
+ - Using SQL to store all the information in the Oracle database;
+ - Data access by JDBI/SQL/JDBC;
+ - BackEnd: Java and Dropwizard as framework;
+- FrontEnd: HTML, CSS and Bootstrap create view, JavaScrip/JQuery as Model/Controller.
