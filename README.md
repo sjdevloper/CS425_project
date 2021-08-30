@@ -1,7 +1,8 @@
 # CS425_project
 
 
-### We built a web applicant. It has three different parts - user management, course management, and discussion management. Users can register and log in. The administrator needs to approve the registration. It was a team project of three. My main task is to build the frontend framework. I have been talking about the progress of the entire project with my team members, and constantly improving the design and code according to the needs of the project.
+### We built a web applicant. It has three different parts - user management, course management, and discussion management. Users can register and log in. The administrator needs to approve the registration. 
+### It was a team project of three. My main task is to build the frontend framework. I have been talking about the progress of the entire project with my team members, and constantly improving the design and code according to the needs of the project.
 
 > - Graph in E-R diagram to build relationship;
 > - Using SQL to store all the information in the Oracle database;
