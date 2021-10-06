@@ -8,7 +8,7 @@
 > - Using SQL to store all the information in the Oracle database;
 > - Data access by JDBI/SQL/JDBC;
 > - BackEnd: Java and Dropwizard as framework;
-> - FrontEnd: HTML, CSS and Bootstrap create view, JavaScrip/JQuery as Model/Controller.
+> - FrontEnd: HTML, CSS and Bootstrap create view.
 
 ## Clone the repository into cs425_project in your computer.
 
